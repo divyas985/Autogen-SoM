@@ -15,11 +15,6 @@ import asyncio
 
 
 
-#Agent that fetches historical stock data
-
-
-
-
 #Creating Open AI Model Client 
 api_key = os.getenv("OPENAI_API_KEY")
 
@@ -29,6 +24,7 @@ if not api_key:
 model_client = OpenAIChatCompletionClient(model="gpt-4o", api_key=api_key)
 
 # =========== INNER TEAM FUNCTIONS ================
+
 
 async def fetch_data(stock_symbol:str)->dict:
     ticker=yf.Ticker(stock_symbol)
@@ -43,6 +39,7 @@ stock_analysis_tool = FunctionTool(fetch_data, description="Analyze stock data a
 ## ============ AUTOGEN AGENTS =============
 
 #  ======= Inner Team Agents =======
+#Agent that fetches historical stock data
 
 data_fetcher=AssistantAgent(
     name="DataFetcherAgent",
@@ -51,13 +48,14 @@ data_fetcher=AssistantAgent(
     tools=[stock_analysis_tool]
 )
 
+#Agent that analyzes trends of the stock data
 trend_analyzer=AssistantAgent(
     name="TrendAnalyzerAgent",
     model_client=model_client,
     system_message=" You are  an Analyzer agent who helps to Analyze Data Trends.Analyzes stock data and generate trend graphs",
     #tools=[generate_stock_chart_tool],
 )
-
+#Agent that generates summary of the stock trends
 summary_generator=AssistantAgent(
     name="SummaryGeneratorAgent",
     model_client=model_client,

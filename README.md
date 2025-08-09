@@ -34,7 +34,7 @@ This document contains:
 
 - **TrendAnalyzerAgent**
 
-  - Role: Compute technical indicators (SMA50, SMA200, RSI) and generate a trend chart (PNG → base64).
+  - Role: Compute technical indicators (SMA50, SMA200, RSI) and generate a trend chart (PNG → base64).(Need to Fix code to generate Graphs)
   - Responsibility: Produce numeric analysis + a base64-encoded PNG image of the trend. Return both summary metrics and the encoded image to the team.
 
 - **SummaryGeneratorAgent**
@@ -104,26 +104,7 @@ APPROVE
 └──────────────┘   └──────────────┘   └────────────────┘
 ```
 
-### Mermaid Diagram (renderable in tools that support mermaid)
 
-```mermaid
-flowchart LR
-  U[Human User]
-  UP[UserProxyAgent]
-  SOM[StockSoMTeam(SocietyOfMindAgent)]
-  DF[DataFetcherAgent]
-  TA[TrendAnalyzerAgent]
-  SG[SummaryGeneratorAgent]
-
-  U -->|input & approval| UP
-  UP --> SOM
-  SOM --> DF
-  SOM --> TA
-  SOM --> SG
-  TA -->|chart (base64)| SG
-  DF --> TA
-  SG --> UP
-```
 
 ---
 

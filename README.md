@@ -6,8 +6,8 @@ This document contains:
 
 1. Clear documentation of agent roles & responsibilities
 2. Demonstration of human-in-the-loop functionality
-3. Flow diagrams (ASCII + Mermaid) with clear indication of the UserProxyAgent
-4. A fully working Microsoft AutoGen AgentChat v0.6.4 example, with the TrendAnalyzer agent generating a trend graph and returning it as a base64 image
+3. Flow diagrams ( with clear indication of the UserProxyAgent
+
 
 ---
 

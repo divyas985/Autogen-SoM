@@ -91,7 +91,7 @@ society_of_mind=SocietyOfMindAgent(
  
 )
 
-# ========= MAIN PIPELINE =========
+# ========= MAIN FUNCTION =========
 termination_condition = TextMentionTermination(text='APPROVE')
 team = RoundRobinGroupChat([society_of_mind, user_proxy], max_turns=4)
 
